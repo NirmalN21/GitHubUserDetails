@@ -6,5 +6,5 @@ function sendData() {
 
     localStorage.setItem("username", username);
     localStorage.setItem("repoCount", "10");
-    window.location.href = "/details/details.html";
+    window.location.href = "details/details.html";
 }
