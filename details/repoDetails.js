@@ -127,7 +127,7 @@ function updatePagination(currentPage) {
 
             const previousSpan = document.createElement('span');
             previousSpan.setAttribute('aria-hidden', 'true');
-            previousSpan.textContent = 'Start';
+            previousSpan.textContent = '<< Start';
 
             previousLink.appendChild(previousSpan);
             previousLi.appendChild(previousLink);
@@ -168,7 +168,7 @@ function updatePagination(currentPage) {
 
             const nextSpan = document.createElement('span');
             nextSpan.setAttribute('aria-hidden', 'true');
-            nextSpan.textContent = 'End';
+            nextSpan.textContent = 'End >>';
 
             nextLink.appendChild(nextSpan);
             nextLi.appendChild(nextLink);
