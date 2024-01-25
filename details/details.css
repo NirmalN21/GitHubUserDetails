@@ -1,0 +1,183 @@
+body {
+    margin: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.container-main {
+    border: 2px solid black;
+    padding: 2rem;
+}
+
+div {
+    /* border: 2px solid black; */
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+}
+
+.img-container img {
+    margin: 0 0 0 1rem;
+    width: 15rem;
+    border-radius: 50%;
+    padding: 0.5rem;
+    border: 3px solid rgb(95, 95, 95);
+}
+
+.user-details {
+    margin-left: 3rem;
+}
+
+.user-details h1 {
+    margin-top: 1rem;
+}
+
+.user-details h5 {
+    margin: 1rem 0;
+}
+
+.user-details img {
+    width: 30px;
+}
+
+.link-container {
+    margin-top: 1rem;
+}
+
+.profile-link-img {
+    margin: 0 1rem 0 3vw;
+    width: 2rem;
+}
+
+.profile-link {
+    font-weight: 600;
+}
+
+.search-container {
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.search-bar {
+    width: 5rem;
+}
+
+.search-bar input {
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+.repo-details {
+    padding: 1rem;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+.repository{
+    height: 15rem;
+}
+
+.repo-details h5 {
+    margin-bottom: 2rem;
+}
+
+.language-badge {
+    color: #fff;
+    padding: 10px;
+    margin: 0 5px 4px 0;
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #428bca;
+}
+
+.footer {
+    display: flex;
+    margin-top: 3rem;
+    justify-content: center;
+}
+
+@media (max-width:1024px) {
+    .profile-link-img {
+        margin: 0 1rem 0 0;
+        width: 2rem;
+    }
+    .repo-details h2 {
+        font-size: 20px;
+    }
+
+    .repo-details h5 {
+        font-size: 15px;
+    }
+
+    .language-badge {
+        font-size: 12px;
+    }
+}
+
+@media (max-width:768px) {
+    .container-main {
+        padding: 0;
+    }
+
+    .img-container img {
+        margin-top: 1rem;
+        width: 10rem;
+        padding: 0.4rem;
+    }
+
+    .user-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+    }
+
+    .user-details h1 {
+        margin-top: 0;
+        font-size: 25px;
+    }
+
+    .user-details h5 {
+        margin: 3px 0 3px;
+        font-size: 15px;
+    }
+
+    .user-details img {
+        width: 20px;
+    }
+
+    .profile-link-img {
+        margin-left: 0;
+    }
+
+    .link-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-bar {
+        margin-bottom: 1rem;
+    }
+
+    .repository{
+        height: fit-content;
+    }
+
+    .repo-details {
+        margin-top: 1rem;
+    }
+
+    .language-badge{
+        font-size: 10px;
+    }
+
+}
+
+@media (max-width:767px) {
+    .search-container {
+        margin: 0;
+        padding-bottom: 0;
+    }
+}

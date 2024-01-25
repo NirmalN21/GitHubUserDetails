@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Username</title>
+
+    <link rel="stylesheet" href="/styles.css">
+
+</head>
+
+<body>
+    <div class="container-main">
+        <div class="container">
+            <div class='github-icon'>
+                <img src="/assets/git.png" alt="" class="icon">
+            </div>
+            <div class='display-text'>
+                <h4>Enter GitHub username</h4>
+                <h4>to search</h4>
+            </div>
+            <form class="form" action="javascript:void(0);" method='POST'>
+                <div class="input-field">
+                    <input type="text" name="username" id="username" autoComplete='given-name'    
+                        placeholder="Enter username" />
+                </div>
+                <button onClick="sendData()" class='btn' type='submit'>Get Details</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/index.js"></script>
+
+</body>
+
+</html>
