@@ -10,14 +10,45 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => console.error('Error fetching data:', error));
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    showLoader();
+    const username = localStorage.getItem("username");
+
+    const repoSearchInput = document.getElementById("repoSearchInput");
+
+    repoSearchInput.addEventListener("input", function () {
+        const searchTerm = repoSearchInput.value.toLowerCase();
+        fetch(`https://api.github.com/users/${username}/repos`)
+            .then(response => response.json())
+            .then(data => {
+                const filteredRepositories = data.filter(repo => {
+                    return repo.name.toLowerCase().includes(searchTerm);
+                });
+                displayRepoDetails(filteredRepositories, 1);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    });
+});
+
+function showLoader() {
+    document.getElementById('loader').style.display = 'block';
+}
+
+function hideLoader() {
+    console.log("thg");
+    document.getElementById('loader').style.display = 'none';
+}
+
 function displayRepoDetails(repos, currentPage) {
+    hideLoader();
+
     const repoDetailsContainer = document.getElementById('repoDetailsContainer');
     repoDetailsContainer.innerHTML = "";
 
     repos.forEach(repo => {
 
         const repoColumn = document.createElement('div');
-        repoColumn.className = 'col-md-6 repository';
+        repoColumn.className = 'col-md-12 repository';
 
         const repoElement = document.createElement('div');
         repoElement.className = 'repo-details';
@@ -88,8 +119,11 @@ function updatePagination(currentPage) {
 
             const previousLink = document.createElement('a');
             previousLink.classList.add('page-link');
-            previousLink.href = "#";
+            previousLink.href = "javascript:void(0)";
             previousLink.setAttribute('aria-label', 'Previous');
+            previousLink.onclick = function () {
+                pageClick("previous", totalPages);
+            }
 
             const previousSpan = document.createElement('span');
             previousSpan.setAttribute('aria-hidden', 'true');
@@ -110,7 +144,7 @@ function updatePagination(currentPage) {
 
                 const a = document.createElement('a');
                 a.classList.add('page-link');
-                a.href = "#";
+                a.href = " javascript:void(0)";
                 a.textContent = page;
                 a.onclick = function () {
                     pageClick(page);
@@ -126,8 +160,11 @@ function updatePagination(currentPage) {
 
             const nextLink = document.createElement('a');
             nextLink.classList.add('page-link');
-            nextLink.href = "#";
+            nextLink.href = " javascript:void(0)";
             nextLink.setAttribute('aria-label', 'Next');
+            nextLink.onclick = function () {
+                pageClick("next", totalPages);
+            }
 
             const nextSpan = document.createElement('span');
             nextSpan.setAttribute('aria-hidden', 'true');
@@ -144,17 +181,28 @@ function updatePagination(currentPage) {
 }
 
 
-function pageClick(pageNo) {
+function pageClick(pageNo,totalPages) {
     const username = localStorage.getItem("username");
     const perPage = localStorage.getItem("repoCount") || 10;
+
+    let newPageNo;
+
+    console.log(pageNo);
+    if (pageNo === 'previous') {
+        newPageNo = 1
+    } else if (pageNo === 'next') {
+        newPageNo = totalPages;
+    } else {
+        newPageNo = pageNo;
+    }
 
     fetch(`https://api.github.com/users/${username}/repos?page=${pageNo}&per_page=${perPage}`)
         .then(response => response.json())
         .then(data => {
-            displayRepoDetails(data, pageNo);
+            displayRepoDetails(data, newPageNo);
         })
         .catch(error => console.error('Error fetching data:', error));
 
-    updatePagination(pageNo);
+    updatePagination(newPageNo);
 
 }
